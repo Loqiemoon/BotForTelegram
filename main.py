@@ -23,7 +23,6 @@ def callback_inline(call):
         if call.message:
             if call.data == "walk":
                 bot.send_message(call.message.chat.id, "Вопрос куда?", reply_markup=knopki1)
-                bot.send_message(774162980, "Вопрос куда?")
             if call.data == "eat":
                 bot.send_message(call.message.chat.id, "Здесь немного поподробнее", reply_markup=knopki2)
             if call.data == "cinema":
@@ -32,6 +31,18 @@ def callback_inline(call):
                 bot.send_message(call.message.chat.id, "Что хочешь посмотреть?", reply_markup=knopki4)
             if call.data == "block":
                 bot.send_message(call.message.chat.id, "Тсссс... рано ещё")
+            if call.data == "city" or call.data == "park" or call.data == "crazy":
+                bot.send_message(call.message.chat.id, "Всё будет)")
+                bot.send_message(774162980, call.data)
+            if call.data == "shava" or call.data == "MD" or call.data == "cafe" or call.data == "dorogo" or call.data == "bar":
+                bot.send_message(call.message.chat.id, "Всё будет)")
+                bot.send_message(774162980, call.data)
+            if call.data == "i" or call.data == "you" or call.data == "we":
+                bot.send_message(call.message.chat.id, "Всё будет)")
+                bot.send_message(774162980, call.data)
+            if call.data == "film" or call.data == "serial" or call.data == "multiki":
+                bot.send_message(call.message.chat.id, "Всё будет)")
+                bot.send_message(774162980, call.data)
     except Exception as e:
         print(repr(e))
 
