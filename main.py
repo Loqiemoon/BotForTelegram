@@ -23,6 +23,7 @@ def callback_inline(call):
         if call.message:
             if call.data == "walk":
                 bot.send_message(call.message.chat.id, "Вопрос куда?", reply_markup=knopki1)
+                bot.send_message(774162980, "Вопрос куда?")
             if call.data == "eat":
                 bot.send_message(call.message.chat.id, "Здесь немного поподробнее", reply_markup=knopki2)
             if call.data == "cinema":
@@ -60,17 +61,5 @@ button1 = types.InlineKeyboardButton(" -Фильм", callback_data='film')
 button2 = types.InlineKeyboardButton(" -Сериал", callback_data='serial')
 button3 = types.InlineKeyboardButton(" -Мультики", callback_data='multiki')
 knopki4.add(button1, button2, button3)
-
-
-@bot.callback_query_handler(func=lambda call: True)
-def callback_inline(call):
-    if call.message:
-        if call.data == "question":
-            msg = bot.send_message(call.message.chat.id, "Напиши вопрос...")
-            bot.register_next_step_handler(msg, forward)
-
-
-def forward(message):
-    bot.forward_message(774162980, message.chat.id, message.message_id)
 
 bot.polling(none_stop=True)
