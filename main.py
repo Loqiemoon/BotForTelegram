@@ -16,6 +16,10 @@ button4 = types.InlineKeyboardButton(" -Сидим дома и смотрим...
 button5 = types.InlineKeyboardButton(" -Пока недоступно", callback_data='block')
 knopki.add(button1, button2, button3, button4, button5)
 
+snova = types.ReplyKeyboardMarkup(row_width=1)
+button1 = types.KeyboardButton(" /start")
+snova.add(button1)
+
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_inline(call):
@@ -23,26 +27,35 @@ def callback_inline(call):
         if call.message:
             if call.data == "walk":
                 bot.send_message(call.message.chat.id, "Вопрос куда?", reply_markup=knopki1)
+                bot.delete_message(call.message.chat.id, call.message.message_id)
             if call.data == "eat":
                 bot.send_message(call.message.chat.id, "Здесь немного поподробнее", reply_markup=knopki2)
+                bot.delete_message(call.message.chat.id, call.message.message_id)
             if call.data == "cinema":
                 bot.send_message(call.message.chat.id, "Кто выбирает?", reply_markup=knopki3)
+                bot.delete_message(call.message.chat.id, call.message.message_id)
             if call.data == "home":
                 bot.send_message(call.message.chat.id, "Что хочешь посмотреть?", reply_markup=knopki4)
+                bot.delete_message(call.message.chat.id, call.message.message_id)
             if call.data == "block":
-                bot.send_message(call.message.chat.id, "Тсссс... рано ещё")
+                bot.send_message(call.message.chat.id, "Тсссс... рано ещё", reply_markup=snova)
+                bot.delete_message(call.message.chat.id, call.message.message_id)
             if call.data == "city" or call.data == "park" or call.data == "crazy":
-                bot.send_message(call.message.chat.id, "Всё будет)")
+                bot.delete_message(call.message.chat.id, call.message.message_id)
                 bot.send_message(774162980, call.data)
+                bot.send_message(call.message.chat.id, "Всё будет)", reply_markup=snova)
             if call.data == "shava" or call.data == "MD" or call.data == "cafe" or call.data == "dorogo" or call.data == "bar":
-                bot.send_message(call.message.chat.id, "Всё будет)")
+                bot.delete_message(call.message.chat.id, call.message.message_id)
                 bot.send_message(774162980, call.data)
+                bot.send_message(call.message.chat.id, "Всё будет)", reply_markup=snova)
             if call.data == "i" or call.data == "you" or call.data == "we":
-                bot.send_message(call.message.chat.id, "Всё будет)")
+                bot.delete_message(call.message.chat.id, call.message.message_id)
                 bot.send_message(774162980, call.data)
+                bot.send_message(call.message.chat.id, "Всё будет)", reply_markup=snova)
             if call.data == "film" or call.data == "serial" or call.data == "multiki":
-                bot.send_message(call.message.chat.id, "Всё будет)")
+                bot.delete_message(call.message.chat.id, call.message.message_id)
                 bot.send_message(774162980, call.data)
+                bot.send_message(call.message.chat.id, "Всё будет)", reply_markup=snova)
     except Exception as e:
         print(repr(e))
 
