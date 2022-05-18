@@ -5,7 +5,7 @@ bot = telebot.TeleBot('1710954735:AAGBciQIaewG_wuUXEzKnb3H_uKAl3KyrC0')
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.send_message(message.chat.id, "Привет, солнышко! Выбирай занятие под настроение:", reply_markup=knopki)
+    bot.send_message(message.chat.id, "Привет! Выбирай занятие под настроение:", reply_markup=knopki)
 
 
 knopki = types.InlineKeyboardMarkup(row_width=1)
@@ -13,8 +13,7 @@ button1 = types.InlineKeyboardButton(" -Идём гулять", callback_data='w
 button2 = types.InlineKeyboardButton(" -Идём есть(пить)", callback_data='eat')
 button3 = types.InlineKeyboardButton(" -Идем в кино", callback_data='cinema')
 button4 = types.InlineKeyboardButton(" -Сидим дома и смотрим...", callback_data='home')
-button5 = types.InlineKeyboardButton(" -Пока недоступно", callback_data='block')
-knopki.add(button1, button2, button3, button4, button5)
+knopki.add(button1, button2, button3, button4)
 
 snova = types.ReplyKeyboardMarkup(row_width=1)
 button1 = types.KeyboardButton(" /start")
@@ -36,9 +35,6 @@ def callback_inline(call):
                 bot.delete_message(call.message.chat.id, call.message.message_id)
             if call.data == "home":
                 bot.send_message(call.message.chat.id, "Что хочешь посмотреть?", reply_markup=knopki4)
-                bot.delete_message(call.message.chat.id, call.message.message_id)
-            if call.data == "block":
-                bot.send_message(call.message.chat.id, "Тсссс... рано ещё", reply_markup=snova)
                 bot.delete_message(call.message.chat.id, call.message.message_id)
             if call.data == "city" or call.data == "park" or call.data == "crazy":
                 bot.delete_message(call.message.chat.id, call.message.message_id)
@@ -71,7 +67,7 @@ button1 = types.InlineKeyboardButton(" -За шавой", callback_data='shava')
 button2 = types.InlineKeyboardButton(" -В мак", callback_data='MD')
 button3 = types.InlineKeyboardButton(" -В кафе", callback_data='cafe')
 button4 = types.InlineKeyboardButton(" -В ресторан", callback_data='dorogo')
-button5 = types.InlineKeyboardButton(" -ВЫПЬЕМ ЗА ЛЮБОВЬ", callback_data='bar')
+button5 = types.InlineKeyboardButton(" -ВЫПЬЕМ", callback_data='bar')
 knopki2.add(button1, button2, button3, button4, button5)
 
 knopki3 = types.InlineKeyboardMarkup(row_width=1)
